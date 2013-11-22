@@ -1,0 +1,31 @@
+<h1>Restaurants#show</h1>
+<p>
+  <strong>Restaurant Name:</strong>
+  <%= @restaurant.name%>
+</p>
+ 
+<p>
+  <strong>Restaurant Description:</strong>
+  <%= @restaurant.description %>
+</p>
+
+<p>
+  <strong>Restaurant Full Address:</strong>
+  <%= @restaurant.full_address %>
+</p>
+
+<p>
+  <strong>Restaurant Phone Number:</strong>
+  <%= @restaurant.phone_number %>
+</p>
+
+
+<%= image_tag @restaurant.image.masthead if @restaurant.image.present? %>
+
+
+<p>
+  <%= link_to "Add an Image", image_path(:restaurant_id => @restaurant) %> |
+  <%= link_to 'Back', restaurants_path %>
+  <%= link_to 'Edit', edit_restaurant_path(@restaurant) %>
+</p>
+

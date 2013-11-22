@@ -1,0 +1,33 @@
+<h1>Hello, Rails!</h1>
+<%= link_to "Home", root_path %>
+<%= link_to 'New restaurant', new_restaurant_path %>
+<table>
+  <tr>
+    <th>Restaurant Name</th>
+    <th>Restaurant Description</th>
+    <th>Restaurant Full Address</th>
+    <th>Restaurant Phone Number</th>
+  </tr>
+ 
+  <% @restaurants.each do |restaurant| %>
+    <tr>
+      <td><%= restaurant.name %></td>
+      <td><%= restaurant.description %></td>
+      <td><%= restaurant.full_address %></td>
+      <td><%= restaurant.phone_number %></td>
+      <td><%= restaurant.image %></td>
+      <td><%= link_to 'Show', restaurant %></td>
+      <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+      <td><%= link_to 'Destroy', restaurant_path(restaurant),
+                      method: :delete, data: { confirm: 'Are you sure?'                
+  } %></td>
+
+      <td><%=image_tag restaurant.image.thumb if restaurant.image.present? %></td>   
+
+    </tr>
+  <% end %>
+  </table>
+
+
+
+

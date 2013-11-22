@@ -1,0 +1,43 @@
+<%= form_for @restaurant, :html => {:multipart => true} do |t| %>
+  <% if @restaurant.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited
+      this restaurant from being saved:</h2>
+    <ul>
+    <% @restaurant.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= t.label :name %><br>
+    <%= t.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= t.label :description %><br>
+    <%= t.text_area :description %>
+  </p>
+ 
+  <p>
+    <%= t.label :full_address %><br>
+    <%= t.text_area :full_address %>
+  </p>
+
+  <p>
+    <%= t.label :phone_number %><br>
+    <%= t.text_field :phone_number %>
+  </p>
+
+  <p>
+    <%= t.label :image %>
+    <%= image_tag(@restaurant.image_url) if @restaurant.image? %>
+    <%= t.file_field :image %>
+    <%= t.hidden_field :image_cache %>
+  </p>
+
+  <p>
+    <%= t.submit %>
+  </p>
+ <% end %>
